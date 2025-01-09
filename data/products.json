@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": " Sony",
+        "description": "Sony Alpha ZV-E10 - APS-C Interchangeable Lens Mirrorless Vlog ",
+        "price": 100,
+        "image": "assets/images/image-1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Nikon",
+        "description": "Nikon D7500 20.9MP DSLR Camera with AF-S DX NIKKOR 18-140mm f/3.5-5.6G",
+        "price": 150,
+        "image": "assets/images/image-2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Sony Tv",
+        "description": "Sony 65 Inch 4K Ultra HD TV X77L Series: LED Smart Google TV KD65X77L- Latest Model, Black",
+        "price": 650,
+        "image": "assets/images/image-3.webp"
+    },
+    {
+        "id": 4,
+        "name": "Mounting Dream",
+        "description": "TV Mount TV Wall Mount for Most 42-75 Inch TVs, Full Motion Articulating Wall Mount",
+        "price": 50,
+        "image": "assets/images/image-4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Perlegear",
+        "description": "TV Stand Mount, Universal TV Stand for 37-80 inch TVs, Height Adjustable Tabletop ",
+        "price": 150,
+        "image": "assets/images/image-5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Filter Kit",
+        "description": "Sony Alpha a7 III Mirrorless Digital Camera with FE 28-70mm Lens - Bundle with Shoulder Bag,",
+        "price": 150,
+        "image": "assets/images/image-6.jpg"
+    }
+]
