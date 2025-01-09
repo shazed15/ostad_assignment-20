@@ -18,7 +18,7 @@ function displayProducts(products) {
             <h2>${product.name}</h2>
             <p>${product.description}</p>
             <p>$${product.price}</p>
-            <button onclick="addToCart(${product.id}, '${product.name}', ${product.price})>Add to Cart</button>
+            <button onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add to Cart</button>
         `;
         productList.appendChild(productDiv);
     });
