@@ -19,17 +19,37 @@ function viewCart() {
     const cartContent = document.getElementById('cart-content');
     cartContent.innerHTML = '';
 
-    cart.forEach(item => {
-        const cartItem = document.createElement('div');
-        cartItem.innerHTML = `
-            <p>${item.name} - $${item.price} x ${item.quantity}</p>
-            <button onclick="updateQuantity(${item.id}, -1)">-</button>
-            <button onclick="updateQuantity(${item.id}, 1)">+</button>
-        `;
-        cartContent.appendChild(cartItem);
-    });
+    if (cart.length === 0) {
+        cartContent.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.innerHTML = `
+                <div style="margin-bottom: 10px; padding: 10px; border-bottom: 1px solid #ccc;">
+                    <p><strong>${item.name}</strong> - $${item.price} x ${item.quantity}</p>
+                    <div>
+                        <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                    </div>
+                </div>
+            `;
+            cartContent.appendChild(cartItem);
+        });
 
-    cartContent.innerHTML += `<p>Total: $${calculateTotal()}</p>`;
+        cartContent.innerHTML += `
+            <div style="margin-top: 20px; padding: 10px; background-color: #f9f9f9; border-top: 1px solid #ccc;">
+                <p><strong>Subtotal:</strong> $${calculateTotal()}</p>
+                <div>
+                    <label for="promo-code">Promo Code:</label>
+                    <input type="text" id="promo-code" placeholder="Enter promo code">
+                    <button onclick="applyPromoCode()">Apply</button>
+                </div>
+                <p id="discount-message" style="color: green; display: none;"></p>
+                <p id="total-price"><strong>Total:</strong> $${calculateTotal()}</p>
+            </div>
+        `;
+    }
+
     cartModal.classList.remove('hidden');
 }
 
@@ -53,6 +73,31 @@ function clearCart() {
     cart = [];
     updateCartCount();
     viewCart();
+}
+
+function applyPromoCode() {
+    const promoCode = document.getElementById('promo-code').value;
+    const discountMessage = document.getElementById('discount-message');
+    const totalPriceElement = document.getElementById('total-price');
+
+    let discount = 0;
+    if (promoCode === 'ostad10') {
+        discount = calculateTotal() * 0.10;
+        discountMessage.style.display = 'block';
+        discountMessage.innerText = '10% discount applied!';
+    } else if (promoCode === 'ostad5') {
+        discount = calculateTotal() * 0.05;
+        discountMessage.style.display = 'block';
+        discountMessage.innerText = '5% discount applied!';
+    } else {
+        discountMessage.style.display = 'block';
+        discountMessage.style.color = 'red';
+        discountMessage.innerText = 'Invalid promo code.';
+        return;
+    }
+
+    const finalTotal = calculateTotal() - discount;
+    totalPriceElement.innerText = `Total: $${finalTotal.toFixed(2)}`;
 }
 
 function checkout() {
